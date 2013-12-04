@@ -239,6 +239,9 @@ namespace BlueSky {
                 mModeInfos[i].mTextRect = QRect(0, top, w, 13);
                 top += 13 + 4;
             }
+
+            setMinimumWidth(70);
+            setMinimumHeight(top + 4);
         }
 
         void ModeView::mouseMoveEvent(QMouseEvent* ev) {
@@ -328,8 +331,9 @@ namespace BlueSky {
 
             mTopFrame = new Frame;
             mTopFrame->setOrientation(Qt::Vertical);
-            mTopFrame->setBorders(Frame::Top | Frame::Bottom | Frame::Right);
+            mTopFrame->setBorders(Frame::Bottom | Frame::Right);
             mTopFrame->setMaximumHeight(25);
+            mTopFrame->setMinimumHeight(25);
             l->addWidget(mTopFrame);
 
             mModeView = new ModeView;
@@ -338,8 +342,6 @@ namespace BlueSky {
             mModeFrame->setOrientation(Qt::Horizontal);
             mModeFrame->setBorders(Frame::Right);
             mModeFrame->setWidget(mModeView);
-            mModeFrame->setMaximumWidth(70);
-            mModeFrame->setMinimumWidth(70);
             l->addWidget(mModeFrame);
         }
 

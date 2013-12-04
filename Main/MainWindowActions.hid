@@ -1,0 +1,17 @@
+
+Ui MainWindowActions {
+
+    MenuBar Main {
+
+        Menu File {
+            Text "&File";
+
+            Action Quit {
+                Text "&Quit";
+                ConnectTo quit();
+            };
+        };
+
+    };
+
+};

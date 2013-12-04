@@ -36,6 +36,9 @@ namespace BlueSky {
         virtual void setOrientation(Qt::Orientation orientation);
         Qt::Orientation orientation() const;
 
+    public:
+        QSize minimumSizeHint() const;
+
     protected:
         void resizeEvent(QResizeEvent*);
         void paintEvent(QPaintEvent*);

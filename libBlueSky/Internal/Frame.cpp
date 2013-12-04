@@ -144,4 +144,28 @@ namespace BlueSky {
         painter.fillRect(inner, grad);
     }
 
+    QSize sizeMin(const QSize& a, const QSize& b) {
+        if (!a.isValid()) {
+            return b;
+        }
+        if (!b.isValid()) {
+            return a;
+        }
+        return QSize(qMin(a.width(), b.width()), qMin(a.height(), b.height()));
+    }
+
+    QSize Frame::minimumSizeHint() const {
+        QSize s;
+
+        if (d->mWidget) {
+            s = sizeMin(s, d->mWidget->minimumSize());
+            if (!s.isValid()) {
+                s = sizeMin(s, d->mWidget->minimumSizeHint());
+            }
+            return s;
+        }
+
+        return sizeMin(s, QWidget::minimumSizeHint() );
+    }
+
 }

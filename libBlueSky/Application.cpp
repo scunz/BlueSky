@@ -113,11 +113,6 @@ namespace BlueSky {
     PrimaryWindow* Application::primaryWindow() {
 
         Window* w = window(PrimaryWindow::idPrimaryWindow());
-        if (!w) {
-            w = newPrimaryWindow();
-            mWindows.append(w);
-        }
-
         return qobject_cast<PrimaryWindow*>(w);
     }
 
@@ -142,6 +137,12 @@ namespace BlueSky {
             if (win->identifier() == id) {
                 return win;
             }
+        }
+
+        if (id == PrimaryWindow::idPrimaryWindow()) {
+            PrimaryWindow* w = newPrimaryWindow();
+            mWindows.append(w);
+            return w;
         }
 
         if (create) {
